@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://dljiffbn10h66"]
+
+[ext_resource type="Script" uid="uid://bhydkkymh3rg8" path="res://Objects/RedButton/red_button.gd" id="1_a0llc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_orfrm"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ie4bg"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_33hrn"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.1
+
+[sub_resource type="Animation" id="Animation_nj6ua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.02300015, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ss7h"]
+resource_name = "push"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.02300015, 0), Vector3(0, 0.008608788, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fjnkd"]
+resource_name = "release"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.008608788, 0), Vector3(0, 0.02300015, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f06t5"]
+_data = {
+&"RESET": SubResource("Animation_nj6ua"),
+&"push": SubResource("Animation_0ss7h"),
+&"release": SubResource("Animation_fjnkd")
+}
+
+[node name="RedButton" type="Node3D"]
+script = ExtResource("1_a0llc")
+
+[node name="Support" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_orfrm")
+
+[node name="Button" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02300015, 0)
+material_override = SubResource("StandardMaterial3D_ie4bg")
+mesh = SubResource("CylinderMesh_33hrn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f06t5")
+}

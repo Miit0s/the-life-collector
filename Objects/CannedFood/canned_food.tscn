@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc1k50snhsp6k"]
+
+[ext_resource type="Script" uid="uid://b8sqltonob3rp" path="res://Objects/CannedFood/canned_food.gd" id="1_e1yub"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q6yeb"]
+top_radius = 0.175
+bottom_radius = 0.175
+height = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q6yeb"]
+height = 0.4
+radius = 0.175
+
+[node name="CannedFood" type="Node3D"]
+script = ExtResource("1_e1yub")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("CylinderMesh_q6yeb")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_q6yeb")

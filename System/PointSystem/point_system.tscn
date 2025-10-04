@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cma1rn8pfgk7e"]
+
+[ext_resource type="Script" uid="uid://c4w0cxbu1fn7t" path="res://System/PointSystem/point_system.gd" id="1_t68q6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mg74t"]
+font_size = 40
+
+[node name="PointSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t68q6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 20.0
+offset_right = -23.999512
+offset_bottom = 75.0
+grow_horizontal = 0
+text = "Score : XX"
+label_settings = SubResource("LabelSettings_mg74t")

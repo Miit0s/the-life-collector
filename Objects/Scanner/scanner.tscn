@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://pgi5i7kedui"]
+
+[ext_resource type="Script" uid="uid://bkj0yesk1ob84" path="res://Objects/Scanner/scanner.gd" id="1_twtln"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kdp30"]
+size = Vector3(0.1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_twtln"]
+size = Vector3(1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h54np"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.27450982)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nmeba"]
+material = SubResource("StandardMaterial3D_h54np")
+size = Vector3(0.7, 1, 0.09)
+
+[node name="Scanner" type="Node3D"]
+script = ExtResource("1_twtln")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, 0)
+mesh = SubResource("BoxMesh_kdp30")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_twtln")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0, 0)
+mesh = SubResource("BoxMesh_nmeba")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.45, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false

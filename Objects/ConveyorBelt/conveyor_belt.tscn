@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://ml3n2frlnqrw"]
+
+[ext_resource type="Script" uid="uid://cioaijka6wnu7" path="res://Objects/ConveyorBelt/conveyor_belt.gd" id="1_gohb8"]
+[ext_resource type="Texture2D" uid="uid://pfq13sgcfobg" path="res://Textures/Prototype/Dark/texture_04.png" id="2_o6l8n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_454ll"]
+albedo_texture = ExtResource("2_o6l8n")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xdcko"]
+size = Vector2(9999, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gohb8"]
+size = Vector3(10, 1, 0.6)
+
+[node name="ConveyorBelt" type="Node3D"]
+script = ExtResource("1_gohb8")
+distance_between_object_spawn = 1.0
+
+[node name="ConveyorMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_454ll")
+mesh = SubResource("PlaneMesh_xdcko")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
+mesh = SubResource("BoxMesh_gohb8")
