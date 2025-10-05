@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://ba6t2cg867cdy" path="res://UISystem/ScanSystem/scan_system.gd" id="1_8cmdt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_enebe"]
-font_size = 35
+font_size = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_8cmdt"]
-font_size = 150
+font_size = 200
 
 [sub_resource type="Animation" id="Animation_8cmdt"]
 resource_name = "NewCurrentScore"
@@ -73,7 +73,7 @@ offset_top = 20.0
 offset_right = 285.0
 offset_bottom = 83.00001
 grow_horizontal = 2
-text = "Percentage requested : XX"
+text = "Goal : XX %"
 label_settings = SubResource("LabelSettings_enebe")
 horizontal_alignment = 1
 

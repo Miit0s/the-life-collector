@@ -4,6 +4,7 @@ class_name Player
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var canned_food: CannedFood = $CannedFood
+@onready var label: Label = $Control/Label
 
 var has_can_in_hand: bool = false:
 	set(new_value):
@@ -45,6 +46,9 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _process(_delta: float) -> void:
+	display_interaction()
+
 func check_interaction() -> void:
 	if not Input.is_action_just_pressed("mouse_clic"): return
 	
@@ -59,6 +63,35 @@ func check_props_interaction() -> void:
 	var owner_id = collider.shape_find_owner(shape_id)
 	var shape: HouseProps = collider.shape_owner_get_owner(owner_id)
 	player_interacted_with_a_props.emit(shape.object_type)
+
+func display_interaction():
+	if not ray_cast_3d.is_colliding(): 
+		label.text = ""
+		return
+	
+	#This code return error sometimes because the object is queue_free. To fix that, I should probably only desctivate it
+	var collider = ray_cast_3d.get_collider()
+	var shape_id = ray_cast_3d.get_collider_shape()
+	var owner_id = collider.shape_find_owner(shape_id)
+	var shape: HouseProps = collider.shape_owner_get_owner(owner_id)
+	
+	if shape == null: return
+	
+	var object_type: HouseProps.Enum = shape.object_type
+	
+	match object_type:
+		HouseProps.Enum.DOOR:
+			label.text = "Door"
+		HouseProps.Enum.RENT_COLLECTOR:
+			label.text = "Rent Collector"
+		HouseProps.Enum.FRIDGE:
+			label.text = "Fridge"
+		HouseProps.Enum.CANNED_FOOD:
+			label.text = "Canned Food"
+		HouseProps.Enum.BED:
+			label.text = "Bed"
+		HouseProps.Enum.KNIFE:
+			label.text = "Knife"
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

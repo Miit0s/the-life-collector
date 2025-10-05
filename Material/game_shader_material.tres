@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3rpip2gwt8dw"]
+
+[ext_resource type="Shader" uid="uid://b2rfu87le5x02" path="res://Shader/PixaltedHorrorShader.gdshader" id="1_h68vv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h68vv")
+shader_parameter/luminance = Color(0.3086, 0.6094, 0.082, 1)
+shader_parameter/brightness = 0.8999999798832
+shader_parameter/contrast = 1.0
+shader_parameter/scale = 1.0
+shader_parameter/rotation = 0.08
+shader_parameter/resolution_downsampling = 3.0
+shader_parameter/matrix_intensity = 0.10000000475

@@ -5,7 +5,7 @@ class_name ScanSystem
 @onready var current: Label = $Current
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var goal_string: String = "Percentage requested"
+var goal_string: String = "Goal"
 
 func change_goal(value: int):
 	goal.text = goal_string + " : " + str(value) + " %"
