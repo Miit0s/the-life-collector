@@ -1,7 +1,10 @@
 extends Node3D
 class_name CannedFood
 
-var completion_percentage: float = 0
+@export var completion_percentage: float = 0:
+	set(new_value):
+		completion_percentage = min(new_value, 100)
+
 var got_scanned: bool = false
 
 # Called when the node enters the scene tree for the first time.

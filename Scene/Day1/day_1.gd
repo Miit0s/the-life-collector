@@ -7,7 +7,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	point_system.show_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,4 +27,4 @@ func canned_food_validate():
 	point_system.add_point()
 
 func day_ended():
-	print("Day_ended")
+	get_tree().change_scene_to_file("uid://ngajd72kek4r")

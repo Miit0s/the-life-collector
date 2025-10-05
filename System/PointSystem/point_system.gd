@@ -2,6 +2,7 @@ extends Control
 class_name PointSystem
 
 @onready var label: Label = $Label
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var text_before_score: String = "Score"
 @export var point_to_add: int = 1
@@ -17,11 +18,16 @@ signal score_reach
 func _ready() -> void:
 	display_text()
 
+func show_game():
+	animation_player.play("FadeIn")
+
 func add_point():
 	_current_point += point_to_add
 	display_text()
 	
 	if _current_point >= point_to_reach:
+		animation_player.play("FadeOut")
+		await animation_player.animation_finished
 		score_reach.emit()
 
 func remove_point():

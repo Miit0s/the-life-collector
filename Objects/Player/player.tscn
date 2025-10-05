@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://42cpyid1ir02"]
+
+[ext_resource type="Script" uid="uid://b2npsgg0ts3wg" path="res://Objects/Player/player.gd" id="1_156m4"]
+[ext_resource type="PackedScene" uid="uid://bc1k50snhsp6k" path="res://Objects/CannedFood/canned_food.tscn" id="2_yw17q"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yw17q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2ya6"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_156m4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_yw17q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l2ya6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -5)
+collision_mask = 4
+
+[node name="CannedFood" parent="." instance=ExtResource("2_yw17q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043102205, -0.7227569)
+visible = false
+completion_percentage = 100.0

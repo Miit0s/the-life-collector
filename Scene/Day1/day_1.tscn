@@ -79,7 +79,7 @@ minimum_percentage = 75.0
 [node name="PointSystem" parent="." instance=ExtResource("7_r8kmg")]
 text_before_score = "Canned Food"
 point_to_remove = 0
-point_to_reach = 10
+point_to_reach = 1
 
 [connection signal="button_clicked" from="RedButton" to="." method="activate_dispenser"]
 [connection signal="scanned_object_is_good" from="Scanner" to="." method="canned_food_validate"]

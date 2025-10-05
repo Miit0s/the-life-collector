@@ -1,9 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://cma1rn8pfgk7e"]
+[gd_scene load_steps=7 format=3 uid="uid://cma1rn8pfgk7e"]
 
 [ext_resource type="Script" uid="uid://c4w0cxbu1fn7t" path="res://System/PointSystem/point_system.gd" id="1_t68q6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mg74t"]
 font_size = 40
+
+[sub_resource type="Animation" id="Animation_t68q6"]
+resource_name = "FadeOut"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pxfw7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1fjmy"]
+resource_name = "FadeIn"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fjmy"]
+_data = {
+&"FadeIn": SubResource("Animation_1fjmy"),
+&"FadeOut": SubResource("Animation_t68q6"),
+&"RESET": SubResource("Animation_pxfw7")
+}
 
 [node name="PointSystem" type="Control"]
 layout_mode = 3
@@ -26,3 +80,17 @@ offset_bottom = 75.0
 grow_horizontal = 0
 text = "Score : XX"
 label_settings = SubResource("LabelSettings_mg74t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1fjmy")
+}
