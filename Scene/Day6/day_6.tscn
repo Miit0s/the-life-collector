@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://yh2mp33bmr81"]
+
+[ext_resource type="Script" uid="uid://cislpym80i7qe" path="res://Scene/Day6/day_6.gd" id="1_abggr"]
+[ext_resource type="PackedScene" uid="uid://ml3n2frlnqrw" path="res://Objects/ConveyorBelt/conveyor_belt.tscn" id="1_od5d8"]
+[ext_resource type="PackedScene" uid="uid://dljiffbn10h66" path="res://Objects/RedButton/red_button.tscn" id="2_2jxv8"]
+[ext_resource type="PackedScene" uid="uid://cu2ymj4jelpon" path="res://Objects/Corpse/corpse.tscn" id="2_og2q6"]
+[ext_resource type="PackedScene" uid="uid://pgi5i7kedui" path="res://Objects/Scanner/scanner.tscn" id="3_og2q6"]
+[ext_resource type="PackedScene" uid="uid://cq37y1cw4n67g" path="res://Objects/Guillotine/guillotine.tscn" id="6_6xitq"]
+[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://System/PointSystem/point_system.tscn" id="7_6xitq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abggr"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tt5xt"]
+sky_material = SubResource("ProceduralSkyMaterial_abggr")
+
+[sub_resource type="Environment" id="Environment_6xitq"]
+background_mode = 2
+sky = SubResource("Sky_tt5xt")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_55k15"]
+size = Vector2(50, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ivadh"]
+size = Vector2(50, 10)
+
+[node name="Day6" type="Node3D"]
+script = ExtResource("1_abggr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6xitq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building"]
+mesh = SubResource("PlaneMesh_55k15")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8604765)
+mesh = SubResource("QuadMesh_ivadh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -20, 0, -2)
+mesh = SubResource("QuadMesh_ivadh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, -2)
+mesh = SubResource("QuadMesh_ivadh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9695694, 0.08832057, -0.22833022, 0, 0.93265796, 0.36076206, 0.24481668, -0.34978384, 0.9042766, -0.6007597, 1.8398831, 3.6989098)
+
+[node name="ConveyorBelt" parent="." instance=ExtResource("1_od5d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9963949, 2.1174676)
+objet_to_spawn = ExtResource("2_og2q6")
+conveyor_speed = 0.8
+spawn_object_x = -8.0
+despawn_object_x = 10.0
+distance_between_object_spawn = 10.0
+
+[node name="RedButton" parent="." instance=ExtResource("2_2jxv8")]
+transform = Transform3D(0.9695694, 0, -0.24481668, 0, 1, 0, 0.24481668, 0, 0.9695694, -0.39216167, 0.87940526, 2.8727803)
+
+[node name="Scanner" parent="." instance=ExtResource("3_og2q6")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.0637784, 1.30295, 2.1309402)
+use_sliced = true
+
+[node name="Guillotine" parent="." node_paths=PackedStringArray("conveyor_belt") instance=ExtResource("6_6xitq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.2, 2.1)
+conveyor_belt = NodePath("../ConveyorBelt")
+corpse = ExtResource("2_og2q6")
+
+[node name="PointSystem" parent="." instance=ExtResource("7_6xitq")]
+text_before_score = "Sliced Food"
+point_to_reach = 1
+
+[connection signal="button_clicked" from="RedButton" to="." method="trigger_guillotine"]
+[connection signal="scanned_object_is_good" from="Scanner" to="." method="corpse_piece_validate"]
+[connection signal="score_reach" from="PointSystem" to="." method="day_ended"]

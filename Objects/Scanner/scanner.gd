@@ -3,6 +3,7 @@ extends Node3D
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 @export var minimum_percentage: float = 80
+@export var use_sliced: bool = false
 
 signal scanned_object_is_good
 signal scanned_object_is_bad
@@ -17,7 +18,14 @@ func _process(_delta: float) -> void:
 	if object_to_scan.got_scanned: return
 	
 	object_to_scan.got_scanned = true
-	print(object_to_scan.completion_percentage)
+	
+	if use_sliced:
+		if object_to_scan.got_sliced:
+			scanned_object_is_good.emit()
+		else:
+			scanned_object_is_bad.emit()
+		
+		return
 	
 	if object_to_scan.completion_percentage >= minimum_percentage:
 		scanned_object_is_good.emit()

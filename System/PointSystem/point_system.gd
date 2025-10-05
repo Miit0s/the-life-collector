@@ -12,6 +12,7 @@ class_name PointSystem
 var _current_point: int = 0:
 	set(new_value):
 		_current_point = max(0, new_value)
+var end_trigger: bool = false
 
 signal score_reach
 
@@ -26,6 +27,9 @@ func add_point():
 	display_text()
 	
 	if _current_point >= point_to_reach:
+		if end_trigger: return
+		
+		end_trigger = true
 		animation_player.play("FadeOut")
 		await animation_player.animation_finished
 		score_reach.emit()

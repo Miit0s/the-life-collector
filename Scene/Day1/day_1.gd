@@ -9,11 +9,6 @@ extends Node3D
 func _ready() -> void:
 	point_system.show_game()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
 func activate_dispenser():
 	if dispenser.is_dispensing: return
 	if dispenser.is_in_cooldown: return

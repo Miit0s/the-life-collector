@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq37y1cw4n67g"]
+
+[ext_resource type="Script" uid="uid://mkg5pk528gqr" path="res://Objects/Guillotine/guillotine.gd" id="1_vkoyi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkoyi"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(1, 0, 0, 0.5411765)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vkoyi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aswgc"]
+albedo_color = Color(0.41215247, 0.41215247, 0.41215247, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_aswgc"]
+size = Vector3(0.1, 0.5, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i31lg"]
+top_radius = 0.01
+bottom_radius = 0.01
+
+[sub_resource type="Animation" id="Animation_od1xw"]
+resource_name = "Cut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.4, 2),
+"transitions": PackedFloat32Array(2, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.75, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.75, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_slice_trigger"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_luy81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.75, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2a1ht"]
+_data = {
+&"Cut": SubResource("Animation_od1xw"),
+&"RESET": SubResource("Animation_luy81")
+}
+
+[node name="Guillotine" type="Node3D"]
+script = ExtResource("1_vkoyi")
+
+[node name="Cutter" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_vkoyi")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_vkoyi")
+
+[node name="Blade" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.3711385e-08, -3.8213705e-15, 1, -8.742277e-08, -0.99999994, 0, 0.99999994, -8.742277e-08, -4.371139e-08, 0, 1.75, 0)
+material_override = SubResource("StandardMaterial3D_aswgc")
+mesh = SubResource("PrismMesh_aswgc")
+
+[node name="Roop" type="MeshInstance3D" parent="Blade"]
+transform = Transform3D(4.3711385e-08, -8.742277e-08, 0.99999994, -3.8213705e-15, -0.99999994, -8.742277e-08, 1, 8.4703295e-22, -4.371138e-08, -1.06848944e-07, -1.2222095, 2.083133e-22)
+mesh = SubResource("CylinderMesh_i31lg")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2a1ht")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false

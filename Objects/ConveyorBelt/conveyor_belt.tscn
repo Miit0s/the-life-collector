@@ -11,7 +11,7 @@ uv1_triplanar = true
 size = Vector2(9999, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gohb8"]
-size = Vector3(10, 1, 0.6)
+size = Vector3(20, 1, 0.6)
 
 [node name="ConveyorBelt" type="Node3D"]
 script = ExtResource("1_gohb8")
