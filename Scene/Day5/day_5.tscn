@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://vkllapuoxui0"]
+
+[ext_resource type="Script" uid="uid://dlkii0fvnldtp" path="res://Scene/Day5/day_5.gd" id="1_lv0gm"]
+[ext_resource type="PackedScene" uid="uid://dljiffbn10h66" path="res://Objects/RedButton/red_button.tscn" id="1_m6365"]
+[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="2_lv0gm"]
+[ext_resource type="PackedScene" uid="uid://o8et4lboneid" path="res://Objects/Grinder/grinder.tscn" id="4_j2bw1"]
+[ext_resource type="PackedScene" uid="uid://cwqr5g0wewhfx" path="res://Objects/Dispenser/object_dispenser.tscn" id="5_u2inc"]
+[ext_resource type="PackedScene" uid="uid://3wjheerm6ayi" path="res://Objects/Corpse/corpse_piece.tscn" id="6_msjyl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j2bw1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tt5xt"]
+sky_material = SubResource("ProceduralSkyMaterial_j2bw1")
+
+[sub_resource type="Environment" id="Environment_u2inc"]
+background_mode = 2
+sky = SubResource("Sky_tt5xt")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_msjyl"]
+size = Vector2(50, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yye55"]
+size = Vector2(50, 10)
+
+[node name="Day5" type="Node3D"]
+script = ExtResource("1_lv0gm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u2inc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building"]
+mesh = SubResource("PlaneMesh_msjyl")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8604765)
+mesh = SubResource("QuadMesh_yye55")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -20, 0, -2)
+mesh = SubResource("QuadMesh_yye55")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, -2)
+mesh = SubResource("QuadMesh_yye55")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.93265796, 0.36076206, 0, -0.36076206, 0.93265796, 0, 1.8398831, 3.711874)
+
+[node name="RedButton" parent="." instance=ExtResource("1_m6365")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87940526, 2.859816)
+hold_mode = true
+
+[node name="PointSystem" parent="." instance=ExtResource("2_lv0gm")]
+text_before_score = "Food Grinded"
+point_to_remove = -1
+point_to_reach = 1
+
+[node name="Grinder" parent="." instance=ExtResource("4_j2bw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96134067, 1.5800972)
+
+[node name="ObjectDispenser" parent="." instance=ExtResource("5_u2inc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9594135, 1.5157474)
+object_to_spawn = ExtResource("6_msjyl")
+
+[connection signal="start_holding_button" from="RedButton" to="." method="start_grinder"]
+[connection signal="stop_holding_button" from="RedButton" to="." method="stop_grinder"]
+[connection signal="score_reach" from="PointSystem" to="." method="day_end"]
+[connection signal="grinder_use_with_no_object_in" from="Grinder" to="." method="grinder_use_for_nothing"]
+[connection signal="object_grinded" from="Grinder" to="." method="piece_grinded"]

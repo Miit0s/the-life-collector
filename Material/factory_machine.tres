@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bh07flmwmclfc"]
+
+[ext_resource type="Texture2D" uid="uid://vul68tnffofs" path="res://Textures/GameTexture/Metal055B_1K-JPG_Color_Pixaleted.jpg" id="1_rphi1"]
+
+[resource]
+albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+albedo_texture = ExtResource("1_rphi1")
+uv1_triplanar = true

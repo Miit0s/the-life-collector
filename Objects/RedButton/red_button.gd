@@ -7,6 +7,8 @@ extends Node3D
 
 var is_activated: bool = false:
 	set(activated):
+		if is_activated == activated: return
+		
 		is_activated = activated
 		@warning_ignore("standalone_ternary")
 		animation_player.play("push") if activated else animation_player.play("release")
@@ -18,10 +20,10 @@ signal stop_holding_button
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if hold_mode:
-		if Input.is_action_pressed("mouse_clic"):
+		if Input.is_action_just_pressed("mouse_clic"):
 			is_activated = true
 			start_holding_button.emit()
-		else:
+		elif not Input.is_action_pressed("mouse_clic") and is_activated:
 			is_activated = false
 			stop_holding_button.emit()
 	else:

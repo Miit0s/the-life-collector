@@ -1,12 +1,16 @@
 extends Node3D
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var scan_system: ScanSystem = $SubViewport/ScanSystem
 
 @export var minimum_percentage: float = 80
 @export var use_sliced: bool = false
 
 signal scanned_object_is_good
 signal scanned_object_is_bad
+
+func _ready() -> void:
+	scan_system.change_goal(int(minimum_percentage))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -27,6 +31,7 @@ func _process(_delta: float) -> void:
 		
 		return
 	
+	scan_system.change_current_value(object_to_scan.completion_percentage)
 	if object_to_scan.completion_percentage >= minimum_percentage:
 		scanned_object_is_good.emit()
 	else:

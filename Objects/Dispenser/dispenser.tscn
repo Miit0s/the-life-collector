@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://do2rxyvk8ouyc"]
+[gd_scene load_steps=7 format=3 uid="uid://do2rxyvk8ouyc"]
 
 [ext_resource type="Script" uid="uid://05e36kb21fpg" path="res://Objects/Dispenser/dispenser.gd" id="1_4myga"]
+[ext_resource type="Material" uid="uid://dx8a3y81veogi" path="res://Material/meat.tres" id="2_0q7qc"]
+[ext_resource type="Material" uid="uid://bh07flmwmclfc" path="res://Material/factory_machine.tres" id="2_8h134"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ik0dc"]
 size = Vector3(0.3, 1, 0.3)
@@ -17,10 +19,12 @@ height = 0.5
 script = ExtResource("1_4myga")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_8h134")
 mesh = SubResource("BoxMesh_ik0dc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+material_override = ExtResource("2_0q7qc")
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_4myga")

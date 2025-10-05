@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cma1rn8pfgk7e"]
 
-[ext_resource type="Script" uid="uid://c4w0cxbu1fn7t" path="res://System/PointSystem/point_system.gd" id="1_t68q6"]
+[ext_resource type="Script" uid="uid://c4w0cxbu1fn7t" path="res://UISystem/PointSystem/point_system.gd" id="1_t68q6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mg74t"]
 font_size = 40

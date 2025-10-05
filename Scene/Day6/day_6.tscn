@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cu2ymj4jelpon" path="res://Objects/Corpse/corpse.tscn" id="2_og2q6"]
 [ext_resource type="PackedScene" uid="uid://pgi5i7kedui" path="res://Objects/Scanner/scanner.tscn" id="3_og2q6"]
 [ext_resource type="PackedScene" uid="uid://cq37y1cw4n67g" path="res://Objects/Guillotine/guillotine.tscn" id="6_6xitq"]
-[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://System/PointSystem/point_system.tscn" id="7_6xitq"]
+[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="7_6xitq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abggr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,7 +24,7 @@ tonemap_mode = 2
 size = Vector2(50, 20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ivadh"]
-size = Vector2(50, 10)
+size = Vector2(50, 20)
 
 [node name="Day6" type="Node3D"]
 script = ExtResource("1_abggr")
@@ -79,7 +79,7 @@ corpse = ExtResource("2_og2q6")
 
 [node name="PointSystem" parent="." instance=ExtResource("7_6xitq")]
 text_before_score = "Sliced Food"
-point_to_reach = 1
+point_to_reach = 10
 
 [connection signal="button_clicked" from="RedButton" to="." method="trigger_guillotine"]
 [connection signal="scanned_object_is_good" from="Scanner" to="." method="corpse_piece_validate"]

@@ -1,9 +1,38 @@
 [gd_scene load_steps=7 format=3 uid="uid://df0fd1ase0xl4"]
 
-[ext_resource type="Script" uid="uid://b77oy1wf18d7f" path="res://System/QuestSystem/quest_system.gd" id="1_cqamf"]
+[ext_resource type="Script" uid="uid://b77oy1wf18d7f" path="res://UISystem/QuestSystem/quest_system.gd" id="1_cqamf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cqamf"]
 font_size = 35
+
+[sub_resource type="Animation" id="Animation_gd8ry"]
+resource_name = "DisplayFirstQuest"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_text_for_new_one"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_cqamf"]
 resource_name = "DisplayNewQuest"
@@ -48,35 +77,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_gd8ry"]
-resource_name = "DisplayFirstQuest"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"change_text_for_new_one"
-}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vknrl"]

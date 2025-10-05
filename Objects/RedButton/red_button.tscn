@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dljiffbn10h66"]
+[gd_scene load_steps=10 format=3 uid="uid://dljiffbn10h66"]
 
 [ext_resource type="Script" uid="uid://bhydkkymh3rg8" path="res://Objects/RedButton/red_button.gd" id="1_a0llc"]
+[ext_resource type="Material" uid="uid://bh07flmwmclfc" path="res://Material/factory_machine.tres" id="2_0ss7h"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_orfrm"]
 top_radius = 0.1
@@ -73,6 +74,7 @@ _data = {
 script = ExtResource("1_a0llc")
 
 [node name="Support" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_0ss7h")
 mesh = SubResource("CylinderMesh_orfrm")
 
 [node name="Button" type="MeshInstance3D" parent="."]

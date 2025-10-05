@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dognrpwyuc2jt"]
+
+[ext_resource type="Texture2D" uid="uid://pyg2q33e6n0l" path="res://Textures/GameTexture/MeatCanTexturePixaleted.png" id="1_abwg4"]
+
+[resource]
+albedo_texture = ExtResource("1_abwg4")
+uv1_scale = Vector3(2.555, 2.15, 1)

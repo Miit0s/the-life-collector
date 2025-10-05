@@ -24,6 +24,8 @@ func _exit_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(delta: float) -> void:
+	if not is_inside_tree(): return
+	
 	check_interaction()
 	
 	if not is_on_floor():

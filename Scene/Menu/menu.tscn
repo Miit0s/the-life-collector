@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjt0x5gy2ri8f"]
+
+[ext_resource type="Material" uid="uid://pymlnmh8rhbh" path="res://Material/house_ground.tres" id="1_5j1yv"]
+[ext_resource type="Script" uid="uid://dxrsqunooeqof" path="res://Scene/Menu/menu.gd" id="1_ffypu"]
+[ext_resource type="Material" uid="uid://bfjng2qs1jmw" path="res://Material/factory_wall.tres" id="2_ffypu"]
+[ext_resource type="PackedScene" uid="uid://ml3n2frlnqrw" path="res://Objects/ConveyorBelt/conveyor_belt.tscn" id="3_0ptmm"]
+[ext_resource type="PackedScene" uid="uid://bc1k50snhsp6k" path="res://Objects/CannedFood/canned_food.tscn" id="4_mgesq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rlbn"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tt5xt"]
+sky_material = SubResource("ProceduralSkyMaterial_4rlbn")
+
+[sub_resource type="Environment" id="Environment_dvdpk"]
+background_mode = 2
+sky = SubResource("Sky_tt5xt")
+ambient_light_sky_contribution = 0.2
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_msr7h"]
+size = Vector2(50, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_je64r"]
+size = Vector2(50, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5j1yv"]
+font_size = 100
+
+[sub_resource type="Animation" id="Animation_ffypu"]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0ptmm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mgesq"]
+_data = {
+&"FadeIn": SubResource("Animation_ffypu"),
+&"RESET": SubResource("Animation_0ptmm")
+}
+
+[node name="Menu" type="Node3D"]
+script = ExtResource("1_ffypu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dvdpk")
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building"]
+material_override = ExtResource("1_5j1yv")
+mesh = SubResource("PlaneMesh_msr7h")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8604765)
+material_override = ExtResource("2_ffypu")
+mesh = SubResource("QuadMesh_je64r")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -20, 0, -2)
+material_override = ExtResource("2_ffypu")
+mesh = SubResource("QuadMesh_je64r")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, -2)
+material_override = ExtResource("2_ffypu")
+mesh = SubResource("QuadMesh_je64r")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9718953, -0.084928274, 0.21956033, 0, 0.9326579, 0.36076203, -0.23541357, -0.35062292, 0.90644586, 1.7517744, 1.524791, 2.8787565)
+
+[node name="ConveyorBelt" parent="." instance=ExtResource("3_0ptmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9963949, 2.1174676)
+objet_to_spawn = ExtResource("4_mgesq")
+conveyor_speed = 0.3
+spawn_object_x = -4.0
+distance_between_object_spawn = 2.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.00008
+offset_top = -25.0
+offset_right = 100.00008
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 75.0
+offset_right = 100.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.5
+offset_top = -244.0
+offset_right = 418.5
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The Life Collector"
+label_settings = SubResource("LabelSettings_5j1yv")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mgesq")
+}
+
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]

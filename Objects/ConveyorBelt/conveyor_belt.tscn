@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ml3n2frlnqrw"]
+[gd_scene load_steps=7 format=3 uid="uid://ml3n2frlnqrw"]
 
 [ext_resource type="Script" uid="uid://cioaijka6wnu7" path="res://Objects/ConveyorBelt/conveyor_belt.gd" id="1_gohb8"]
-[ext_resource type="Texture2D" uid="uid://pfq13sgcfobg" path="res://Textures/Prototype/Dark/texture_04.png" id="2_o6l8n"]
+[ext_resource type="Texture2D" uid="uid://b1wllra7nywpq" path="res://Textures/GameTexture/Rubber001_1K-JPG_Color_Pixaleted.jpg" id="2_o6l8n"]
+[ext_resource type="Material" uid="uid://bh07flmwmclfc" path="res://Material/factory_machine.tres" id="3_o6l8n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_454ll"]
 albedo_texture = ExtResource("2_o6l8n")
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xdcko"]
-size = Vector2(9999, 0.5)
+size = Vector2(1000, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gohb8"]
-size = Vector3(20, 1, 0.6)
+size = Vector3(100, 1, 0.6)
 
 [node name="ConveyorBelt" type="Node3D"]
 script = ExtResource("1_gohb8")
@@ -23,4 +24,35 @@ mesh = SubResource("PlaneMesh_xdcko")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.51, 0)
+material_override = ExtResource("3_o6l8n")
 mesh = SubResource("BoxMesh_gohb8")
+
+[node name="Light" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.7137117, 0)
+spot_angle = 20.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2, 2.714, 0)
+spot_angle = 20.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4, 2.714, 0)
+spot_angle = 20.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6, 2.714, 0)
+spot_angle = 20.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6, 2.714, 0)
+spot_angle = 20.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4, 2.714, 0)
+spot_angle = 20.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2, 2.714, 0)
+spot_angle = 20.0

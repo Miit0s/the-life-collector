@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqr5g0wewhfx"]
+
+[ext_resource type="Script" uid="uid://dw2catcaaxa1l" path="res://Objects/Dispenser/object_dispenser.gd" id="1_bwk0e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x3i6n"]
+size = Vector3(1, 5, 1)
+
+[node name="ObjectDispenser" type="Node3D"]
+script = ExtResource("1_bwk0e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_x3i6n")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.276863, 0)
+gizmo_extents = 0.8

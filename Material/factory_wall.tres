@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bfjng2qs1jmw"]
+
+[ext_resource type="Texture2D" uid="uid://bjb3b135x85ss" path="res://Textures/GameTexture/Concrete033_1K-JPG_Color_Pixaleted.jpg" id="1_pnv1h"]
+
+[resource]
+albedo_texture = ExtResource("1_pnv1h")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dx8a3y81veogi"]
+
+[ext_resource type="Texture2D" uid="uid://d15tyr2uen33o" path="res://Textures/GameTexture/meat.jpg" id="1_js777"]
+
+[resource]
+albedo_texture = ExtResource("1_js777")

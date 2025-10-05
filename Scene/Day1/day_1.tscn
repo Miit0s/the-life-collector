@@ -1,23 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://btdn2gikdsyge"]
+[gd_scene load_steps=15 format=3 uid="uid://btdn2gikdsyge"]
 
 [ext_resource type="Script" uid="uid://c8hebvudm3g5y" path="res://Scene/Day1/day_1.gd" id="1_b0utm"]
+[ext_resource type="Material" uid="uid://pymlnmh8rhbh" path="res://Material/house_ground.tres" id="2_djrk2"]
 [ext_resource type="PackedScene" uid="uid://ml3n2frlnqrw" path="res://Objects/ConveyorBelt/conveyor_belt.tscn" id="2_ilu4x"]
+[ext_resource type="Material" uid="uid://bfjng2qs1jmw" path="res://Material/factory_wall.tres" id="2_r7ocv"]
 [ext_resource type="PackedScene" uid="uid://bc1k50snhsp6k" path="res://Objects/CannedFood/canned_food.tscn" id="3_l3kie"]
 [ext_resource type="PackedScene" uid="uid://dljiffbn10h66" path="res://Objects/RedButton/red_button.tscn" id="4_r8kmg"]
 [ext_resource type="PackedScene" uid="uid://do2rxyvk8ouyc" path="res://Objects/Dispenser/dispenser.tscn" id="5_ilu4x"]
 [ext_resource type="PackedScene" uid="uid://pgi5i7kedui" path="res://Objects/Scanner/scanner.tscn" id="6_l3kie"]
-[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://System/PointSystem/point_system.tscn" id="7_r8kmg"]
+[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="7_r8kmg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_po3mu"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_tt5xt"]
+[sub_resource type="Sky" id="Sky_djrk2"]
 sky_material = SubResource("ProceduralSkyMaterial_po3mu")
 
 [sub_resource type="Environment" id="Environment_ajv3d"]
 background_mode = 2
-sky = SubResource("Sky_tt5xt")
+sky = SubResource("Sky_djrk2")
+ambient_light_sky_contribution = 0.2
 tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cwsa7"]
@@ -32,30 +35,30 @@ script = ExtResource("1_b0utm")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ajv3d")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0)
-shadow_enabled = true
-
 [node name="Building" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Building"]
+material_override = ExtResource("2_djrk2")
 mesh = SubResource("PlaneMesh_cwsa7")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Building"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8604765)
+material_override = ExtResource("2_r7ocv")
 mesh = SubResource("QuadMesh_enlc8")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Building"]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -20, 0, -2)
+material_override = ExtResource("2_r7ocv")
 mesh = SubResource("QuadMesh_enlc8")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Building"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, -2)
+material_override = ExtResource("2_r7ocv")
 mesh = SubResource("QuadMesh_enlc8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.93265796, 0.36076206, 0, -0.36076206, 0.93265796, 0, 1.8398831, 3.711874)
+transform = Transform3D(1, 0, 0, 0, 0.93265796, 0.36076206, 0, -0.36076206, 0.93265796, 0, 1.8398831, 3.257585)
 
 [node name="ConveyorBelt" parent="." instance=ExtResource("2_ilu4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9963949, 2.1174676)
@@ -65,7 +68,7 @@ spawn_object_x = -4.0
 distance_between_object_spawn = 2.0
 
 [node name="RedButton" parent="." instance=ExtResource("4_r8kmg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87940526, 2.859816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87940526, 2.5461853)
 
 [node name="Dispenser" parent="." instance=ExtResource("5_ilu4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5177782, 2.1266124)
@@ -73,13 +76,13 @@ percentage_to_add_to_can = 1.5
 ray_cast_enable_offset = 0.3
 
 [node name="Scanner" parent="." instance=ExtResource("6_l3kie")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1740353, 1.30295, 2.1309402)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.174, 1.303, 2.05)
 minimum_percentage = 75.0
 
 [node name="PointSystem" parent="." instance=ExtResource("7_r8kmg")]
 text_before_score = "Canned Food"
 point_to_remove = 0
-point_to_reach = 10
+point_to_reach = 1
 
 [connection signal="button_clicked" from="RedButton" to="." method="activate_dispenser"]
 [connection signal="scanned_object_is_good" from="Scanner" to="." method="canned_food_validate"]

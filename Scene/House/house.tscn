@@ -1,9 +1,17 @@
-[gd_scene load_steps=31 format=3 uid="uid://ct0tql2yu45s"]
+[gd_scene load_steps=59 format=4 uid="uid://ct0tql2yu45s"]
 
 [ext_resource type="Script" uid="uid://dr31tohgt4630" path="res://Scene/House/house.gd" id="1_4d6p6"]
 [ext_resource type="PackedScene" uid="uid://42cpyid1ir02" path="res://Objects/Player/player.tscn" id="1_al4dt"]
 [ext_resource type="Script" uid="uid://ckpag1a30whqd" path="res://Enum/house_props_enum.gd" id="2_4d6p6"]
-[ext_resource type="PackedScene" uid="uid://df0fd1ase0xl4" path="res://System/QuestSystem/quest_system.tscn" id="4_3d0we"]
+[ext_resource type="Material" uid="uid://pymlnmh8rhbh" path="res://Material/house_ground.tres" id="2_pv2rd"]
+[ext_resource type="Material" uid="uid://g03sv46ps0hx" path="res://Material/house_wall.tres" id="3_0p06j"]
+[ext_resource type="PackedScene" uid="uid://df0fd1ase0xl4" path="res://UISystem/QuestSystem/quest_system.tscn" id="4_3d0we"]
+[ext_resource type="ArrayMesh" uid="uid://c7k2lgt4ndtkp" path="res://Model/Collector.obj" id="4_53t7d"]
+[ext_resource type="Texture2D" uid="uid://b44d8g77k0wjm" path="res://Textures/GameTexture/pixelated_old_door.jpg" id="5_dl7y5"]
+[ext_resource type="Material" uid="uid://btimwm747wkms" path="res://Material/fridge.tres" id="6_0p06j"]
+[ext_resource type="Texture2D" uid="uid://cf2iudyifhepn" path="res://Textures/GameTexture/PixaltedFridgeGrid.png" id="7_xx5km"]
+[ext_resource type="Texture2D" uid="uid://dxgjuoj2gvnv4" path="res://Textures/GameTexture/vc_mattress.png" id="8_pw7id"]
+[ext_resource type="Material" uid="uid://dognrpwyuc2jt" path="res://Material/canned_food.tres" id="10_ssyd2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0awj2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,41 +60,245 @@ size = Vector3(1, 10, 20)
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_53t7d"]
-size = Vector3(20, 1, 20)
+size = Vector3(50, 1, 80)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pv2rd"]
 size = Vector3(10, 10, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_al4dt"]
-size = Vector3(1, 2, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw7id"]
+size = Vector3(1, 10, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_dl7y5"]
-size = Vector3(1, 2, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_ssyd2"]
+size = Vector3(1, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k24q3"]
+size = Vector3(1, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbsqy"]
+size = Vector3(5, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_44nsu"]
+size = Vector3(5, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ssyd2"]
+size = Vector3(1, 2.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k24q3"]
+cull_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_lbsqy"]
+material = SubResource("StandardMaterial3D_k24q3")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_al4dt"]
+size = Vector3(1.2, 2.5, 1.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pv2rd"]
+_surfaces = [{
+"aabb": AABB(-0.5, -1.25, -0.75, 1, 2.5, 1.5),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAANejcD9nZmY/AACAPwAAgD/Xo3A/Z2ZmPwAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAADXo3A/y8zMPdejcD9nZmY/AACAPwAAAACNwnU9y8zMPdejcD/LzMw9AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD/Xo3A/Z2ZmP43CdT1nZmY/AAAAAAAAgD+NwnU9Z2ZmP43CdT3LzMw9AACAPwAAAAAAAAAAAAAAAI3CdT3LzMw9AAAAAAAAgD+NwnU9y8zMPQAAAAAAAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAIA/AACAP9iAzj0AAAAAAACAPwAAAAAAAAAA5S9mPwAAAAAAAAAAAACAPwAAgD8AAAAAAACAPwAAgD/YgM49AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAgD/YgM49AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/5S9mPwAAAADlL2Y/AACAPwAAgD/YgM49AACAP9iAzj0AAAAAAACAPwAAgD/YgM49AACAP9iAzj0AAAAAAAAAAAAAgD8AAAAA2IDOPQAAgD/YgM49"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("AAAAvwAAoL8AAEC/AAAAvwAAoD8AAEC/AAAAvwAAoL8AAEA/AAAAvwAAoL8AAEC/AAAAvwAAoL8AAEA/AAAAPwAAoL8AAEC/AAAAvwAAoL8AAEC/AAAAPwAAoL8AAEC/AAAAvwAAoD8AAEC/AAAAvwAAoL8AAEA/AAAAvwAAoD8AAEC/AAAAvwAAoD8AAEA/AAAAvwAAoL8AAEA/AAAAvwAAoD8AAEA/AAAAPwAAoD8AAEA/AAAAvwAAoD8AAEC/AAAAPwAAoD8AAEA/AAAAvwAAoD8AAEA/AAAAPwAAoL8AAEC/AAAAPwAAoL8AAEA/AAAAP83MjL+amRm/AAAAPwAAoL8AAEC/AAAAP83MjL+amRm/AAAAPwAAoD8AAEC/AAAAvwAAoL8AAEA/AAAAPwAAoL8AAEA/AAAAPwAAoL8AAEC/AAAAvwAAoL8AAEA/AAAAPwAAoD8AAEA/AAAAPwAAoL8AAEA/AAAAPwAAoL8AAEA/AAAAP83MjL+amRk/AAAAP83MjL+amRm/AAAAPwAAoL8AAEA/AAAAP83MjD+amRk/AAAAP83MjL+amRk/AAAAvwAAoD8AAEC/AAAAPwAAoL8AAEC/AAAAPwAAoD8AAEC/AAAAvwAAoD8AAEC/AAAAPwAAoD8AAEC/AAAAPwAAoD8AAEA/AAAAPwAAoD8AAEC/AAAAP83MjL+amRm/AAAAP83MjD+amRm/AAAAPwAAoD8AAEC/AAAAP83MjD+amRm/AAAAP83MjD+amRk/AAAAPwAAoL8AAEA/AAAAPwAAoD8AAEA/AAAAP83MjD+amRk/AAAAPwAAoD8AAEC/AAAAP83MjD+amRk/AAAAPwAAoD8AAEA/cDLMvs3MjL+amRm/cDLMvs3MjL+amRk/cDLMvs3MjD+amRm/cDLMvs3MjL+amRm/cDLMvs3MjD+amRm/AAAAP83MjL+amRm/cDLMvs3MjL+amRm/AAAAP83MjL+amRk/cDLMvs3MjL+amRk/cDLMvs3MjD+amRm/cDLMvs3MjD+amRk/AAAAP83MjD+amRm/cDLMvs3MjL+amRk/cDLMvs3MjD+amRk/cDLMvs3MjD+amRm/cDLMvs3MjL+amRk/AAAAP83MjD+amRk/cDLMvs3MjD+amRk/cDLMvs3MjL+amRm/AAAAP83MjL+amRm/AAAAP83MjL+amRk/cDLMvs3MjL+amRk/AAAAP83MjL+amRk/AAAAP83MjD+amRk/cDLMvs3MjD+amRm/AAAAP83MjD+amRm/AAAAP83MjL+amRm/cDLMvs3MjD+amRk/AAAAP83MjD+amRk/AAAAP83MjD+amRm/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9/AID///9//38AgP///3//fwCA/3//fwAA/7//f/9/AAD/v/9//38AAP+//3//////////f/////////9//////////38AAP//////fwAA//////9/AAD/////////f/9/AID///9//38AgP///3//fwCA/////wAA/7//////AAD/v/////8AAP+//3//////////f/////////9//////////////wAA/7//////AAD/v/////8AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//38AAP//////fwAA//////9/AAD/////")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw7id"]
+transparency = 1
+albedo_texture = ExtResource("7_xx5km")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0p06j"]
+size = Vector2(1.3, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pv2rd"]
+size = Vector3(0.1, 2.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pv2rd"]
+albedo_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0p06j"]
+material = SubResource("StandardMaterial3D_pv2rd")
+size = Vector3(0.1, 0.45, 0.05)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0p06j"]
-size = Vector3(1.5, 1, 3)
+size = Vector3(2, 0.2, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssyd2"]
+albedo_color = Color(0.5952204, 0.5541438, 0.4566673, 1)
+albedo_texture = ExtResource("8_pw7id")
+uv1_scale = Vector3(0.58, 1, 0.27)
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_xx5km"]
-size = Vector3(1.5, 1, 3)
+size = Vector3(2, 0.2, 4)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxeq3"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4d6p6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xx5km"]
-size = Vector3(2, 3, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pw7id"]
-size = Vector3(2, 3, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53t7d"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4d6p6"]
-height = 0.5
-radius = 0.2
+height = 0.4
+radius = 0.175
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_3d0we"]
-top_radius = 0.2
-bottom_radius = 0.2
-height = 0.5
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_xx5km"]
+radius = 0.175
+sections = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xx5km"]
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yh2pu"]
+albedo_texture = ExtResource("5_dl7y5")
+uv1_scale = Vector3(0.48, 0.32, 1)
+uv1_offset = Vector3(0.5, 0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pw7id"]
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="Animation" id="Animation_dl7y5"]
+resource_name = "OpenDoor"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorRotationPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0p06j"]
+resource_name = "OpenFridge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Props/Fridge/DoorMovePoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.3089969, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HouseModel/FridgeBody:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Props/Fridge:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_rv5ty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorRotationPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Props/Fridge/DoorMovePoint:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HouseModel/FridgeBody:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Props/Fridge:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EndDayTransition/ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ssyd2"]
+resource_name = "EndDay"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndDayTransition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pv2rd"]
+_data = {
+&"EndDay": SubResource("Animation_ssyd2"),
+&"OpenDoor": SubResource("Animation_dl7y5"),
+&"OpenFridge": SubResource("Animation_0p06j"),
+&"RESET": SubResource("Animation_rv5ty")
+}
 
 [node name="House" type="Node3D"]
 script = ExtResource("1_4d6p6")
@@ -101,6 +313,7 @@ shape = SubResource("BoxShape3D_4d6p6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("2_pv2rd")
 mesh = SubResource("PlaneMesh_al4dt")
 skeleton = NodePath("../..")
 
@@ -109,6 +322,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7.5)
 shape = SubResource("BoxShape3D_lxeq3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Enter1"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_al4dt")
 
 [node name="Enter2" type="CollisionShape3D" parent="HouseModel"]
@@ -116,6 +330,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7.5)
 shape = SubResource("BoxShape3D_lxeq3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Enter2"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_al4dt")
 
 [node name="Wall1" type="CollisionShape3D" parent="HouseModel"]
@@ -123,6 +338,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5.5)
 shape = SubResource("BoxShape3D_3d0we")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Wall1"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_lxeq3")
 
 [node name="Wall2" type="CollisionShape3D" parent="HouseModel"]
@@ -130,6 +346,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.5)
 shape = SubResource("BoxShape3D_3d0we")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Wall2"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_lxeq3")
 
 [node name="Wall3" type="CollisionShape3D" parent="HouseModel"]
@@ -137,6 +354,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.5)
 shape = SubResource("BoxShape3D_53t7d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Wall3"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_4d6p6")
 
 [node name="Wall4" type="CollisionShape3D" parent="HouseModel"]
@@ -144,6 +362,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 shape = SubResource("BoxShape3D_dl7y5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Wall4"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_3d0we")
 
 [node name="Wall5" type="CollisionShape3D" parent="HouseModel"]
@@ -151,6 +370,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 shape = SubResource("BoxShape3D_dl7y5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/Wall5"]
+material_override = ExtResource("3_0p06j")
 mesh = SubResource("BoxMesh_3d0we")
 
 [node name="Ceiling" type="CollisionShape3D" parent="HouseModel"]
@@ -161,19 +381,65 @@ shape = SubResource("BoxShape3D_rv5ty")
 mesh = SubResource("BoxMesh_53t7d")
 
 [node name="NoEscape" type="CollisionShape3D" parent="HouseModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 shape = SubResource("BoxShape3D_pv2rd")
 
-[node name="Enter Light" type="SpotLight3D" parent="HouseModel"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.066897, 8.487261)
-light_energy = 0.5
+[node name="EnterLight" type="SpotLight3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 0.15179558, 0.9884119, 0, -0.9884119, 0.15179558, 0, 5.066897, 9.248535)
 spot_range = 8.0
+spot_angle = 25.0
 
 [node name="RoomLight" type="SpotLight3D" parent="HouseModel"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.066897, -1.8633684)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.066897, -3.816599)
 light_energy = 0.5
 spot_range = 10.0
 spot_angle = 80.0
+
+[node name="NearDoor" type="CollisionShape3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 9.5)
+shape = SubResource("BoxShape3D_pw7id")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/NearDoor"]
+material_override = ExtResource("3_0p06j")
+mesh = SubResource("BoxMesh_ssyd2")
+
+[node name="NearDoor2" type="CollisionShape3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 9.5)
+shape = SubResource("BoxShape3D_pw7id")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/NearDoor2"]
+material_override = ExtResource("3_0p06j")
+mesh = SubResource("BoxMesh_k24q3")
+
+[node name="NearDoor3" type="CollisionShape3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 9.5)
+shape = SubResource("BoxShape3D_lbsqy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel/NearDoor3"]
+material_override = ExtResource("3_0p06j")
+mesh = SubResource("BoxMesh_44nsu")
+
+[node name="FridgeBody" type="CollisionShape3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95, 1.75, -6.95)
+shape = SubResource("BoxShape3D_ssyd2")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3891608, 23.693892)
+mesh = SubResource("QuadMesh_lbsqy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HouseModel"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.274977, 1.3891608, 23.693892)
+mesh = SubResource("QuadMesh_lbsqy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="HouseModel"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.00778, 1.3891608, 23.693892)
+mesh = SubResource("QuadMesh_lbsqy")
+
+[node name="RentCollecteurLight" type="OmniLight3D" parent="HouseModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3713007, 10.471158)
+light_energy = 0.1
+omni_range = 1.0
 
 [node name="Player" parent="." instance=ExtResource("1_al4dt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.0139074)
@@ -182,21 +448,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.0139074)
 collision_layer = 5
 
 [node name="Fridge" type="CollisionShape3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9144282, 1.5, -6.945459)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9449584, 1.75, -6.945)
 shape = SubResource("BoxShape3D_al4dt")
 script = ExtResource("2_4d6p6")
 object_type = 2
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Props/Fridge"]
+visible = false
+size = Vector3(1, 2.5, 1.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Props/Fridge/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10098529, 0, 0)
+operation = 2
+size = Vector3(0.9996152, 2.2, 1.2)
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Props/Fridge"]
+material_override = ExtResource("6_0p06j")
+mesh = SubResource("ArrayMesh_pv2rd")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Fridge"]
-mesh = SubResource("BoxMesh_dl7y5")
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_pw7id")
+mesh = SubResource("PlaneMesh_0p06j")
+
+[node name="DoorMovePoint" type="Marker3D" parent="Props/Fridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.25, -0.75)
+gizmo_extents = 0.5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/Fridge/DoorMovePoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049999952, 1.25, 0.75)
+material_override = ExtResource("6_0p06j")
+mesh = SubResource("BoxMesh_pv2rd")
+skeleton = NodePath("../..")
+
+[node name="Handle" type="MeshInstance3D" parent="Props/Fridge/DoorMovePoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000014, 1.25, 1.3499999)
+mesh = SubResource("BoxMesh_0p06j")
+skeleton = NodePath("../..")
 
 [node name="Bed" type="CollisionShape3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, -7)
+transform = Transform3D(0.99990255, 0, 0.01396218, 0, 1, 0, -0.01396218, 0, 0.99990255, 3.127041, 0.60000026, -6.6104736)
 shape = SubResource("BoxShape3D_0p06j")
 script = ExtResource("2_4d6p6")
 object_type = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Bed"]
+material_override = SubResource("StandardMaterial3D_ssyd2")
 mesh = SubResource("BoxMesh_xx5km")
 
 [node name="RentCollector" type="CollisionShape3D" parent="Props"]
@@ -206,26 +503,56 @@ script = ExtResource("2_4d6p6")
 object_type = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/RentCollector"]
-mesh = SubResource("CapsuleMesh_4d6p6")
-
-[node name="Door" type="CollisionShape3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9.5)
-shape = SubResource("BoxShape3D_xx5km")
-script = ExtResource("2_4d6p6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Door"]
-mesh = SubResource("BoxMesh_pw7id")
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_53t7d")
+mesh = ExtResource("4_53t7d")
 
 [node name="CannedFood" type="CollisionShape3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0291343, 1.572173, -5.4982667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9602005, 1.9530278, -7.040431)
 shape = SubResource("CylinderShape3D_4d6p6")
 script = ExtResource("2_4d6p6")
 object_type = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/CannedFood"]
-mesh = SubResource("CylinderMesh_3d0we")
+material_override = ExtResource("10_ssyd2")
+mesh = SubResource("TubeTrailMesh_xx5km")
+
+[node name="DoorRotationPoint" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99972785, 0.5, 9.5)
+collision_layer = 4
+
+[node name="Door" type="CollisionShape3D" parent="DoorRotationPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99972785, 1.5, 0)
+shape = SubResource("BoxShape3D_xx5km")
+script = ExtResource("2_4d6p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorRotationPoint/Door"]
+material_override = SubResource("StandardMaterial3D_yh2pu")
+mesh = SubResource("BoxMesh_pw7id")
 
 [node name="QuestSystem" parent="." instance=ExtResource("4_3d0we")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pv2rd")
+}
+
+[node name="EndDayTransition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EndDayTransition"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="player_has_finish_eating" from="Player" to="." method="player_has_finish_eating_food"]
 [connection signal="player_interacted_with_a_props" from="Player" to="." method="player_interact_with_props"]

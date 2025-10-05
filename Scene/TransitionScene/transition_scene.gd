@@ -1,4 +1,4 @@
-extends Node3D
+extends Control
 class_name TransitionScene
 
 enum Day {
@@ -10,8 +10,8 @@ enum Day {
 	DAY_6
 }
 
-@onready var label: Label = $Control/Label
-@onready var animation_player: AnimationPlayer = $Control/AnimationPlayer
+@onready var label: Label = $Label
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var wait_time_for_begin_transition: float = 2
 var wait_time_for_end_transition: float = 5
