@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalValue="*res://Autoload/global_value.gd"
 
+[display]
+
+window/size/mode=2
+
 [input]
 
 mouse_clic={
