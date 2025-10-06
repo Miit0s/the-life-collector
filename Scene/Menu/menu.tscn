@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjt0x5gy2ri8f"]
+[gd_scene load_steps=16 format=3 uid="uid://bjt0x5gy2ri8f"]
 
 [ext_resource type="Material" uid="uid://pymlnmh8rhbh" path="res://Material/house_ground.tres" id="1_5j1yv"]
 [ext_resource type="Script" uid="uid://dxrsqunooeqof" path="res://Scene/Menu/menu.gd" id="1_ffypu"]
 [ext_resource type="Material" uid="uid://bfjng2qs1jmw" path="res://Material/factory_wall.tres" id="2_ffypu"]
 [ext_resource type="PackedScene" uid="uid://ml3n2frlnqrw" path="res://Objects/ConveyorBelt/conveyor_belt.tscn" id="3_0ptmm"]
 [ext_resource type="PackedScene" uid="uid://bc1k50snhsp6k" path="res://Objects/CannedFood/canned_food.tscn" id="4_mgesq"]
-[ext_resource type="Material" uid="uid://d3rpip2gwt8dw" path="res://Material/game_shader_material.tres" id="4_nms3e"]
+[ext_resource type="PackedScene" uid="uid://jcvyvyd4djh6" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.tscn" id="6_nms3e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rlbn"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,6 +16,7 @@ sky_material = SubResource("ProceduralSkyMaterial_4rlbn")
 
 [sub_resource type="Environment" id="Environment_dvdpk"]
 background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_tt5xt")
 ambient_light_sky_contribution = 0.2
 tonemap_mode = 2
@@ -25,11 +26,6 @@ size = Vector2(50, 20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_je64r"]
 size = Vector2(50, 10)
-
-[sub_resource type="QuadMesh" id="QuadMesh_y5cl3"]
-material = ExtResource("4_nms3e")
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5j1yv"]
 font_size = 100
@@ -98,12 +94,6 @@ mesh = SubResource("QuadMesh_je64r")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, -2)
 material_override = ExtResource("2_ffypu")
 mesh = SubResource("QuadMesh_je64r")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9718953, -0.084928274, 0.21956033, 0, 0.9326579, 0.36076203, -0.23541357, -0.35062292, 0.90644586, 1.7517744, 1.524791, 2.8787565)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-mesh = SubResource("QuadMesh_y5cl3")
 
 [node name="ConveyorBelt" parent="." instance=ExtResource("3_0ptmm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9963949, 2.1174676)
@@ -180,6 +170,9 @@ color = Color(0, 0, 0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_mgesq")
 }
+
+[node name="CameraWithPixelEffect" parent="." instance=ExtResource("6_nms3e")]
+transform = Transform3D(0.9718953, -0.084928274, 0.21956031, 0, 0.9326579, 0.36076203, -0.23541355, -0.35062292, 0.9064458, 1.7517744, 1.524791, 2.8787565)
 
 [connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]

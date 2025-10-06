@@ -1,8 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
-@onready var camera_3d: Camera3D = $Camera3D
-@onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@onready var camera_with_pixel_effect: CameraWithPixelEffect = $CameraWithPixelEffect
+@onready var ray_cast_3d: RayCast3D = $CameraWithPixelEffect/RayCast3D
 @onready var canned_food: CannedFood = $CannedFood
 @onready var label: Label = $Control/Label
 
@@ -96,8 +96,8 @@ func display_interaction():
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		camera_3d.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
-		camera_3d.rotation.x = clampf(camera_3d.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+		camera_with_pixel_effect.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+		camera_with_pixel_effect.rotation.x = clampf(camera_with_pixel_effect.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
 func eat_can():
 	canned_food.completion_percentage -= 25

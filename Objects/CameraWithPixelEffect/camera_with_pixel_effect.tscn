@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://jcvyvyd4djh6"]
+
+[ext_resource type="Material" uid="uid://d3rpip2gwt8dw" path="res://Material/game_shader_material.tres" id="1_6lw86"]
+[ext_resource type="Script" uid="uid://ddleok3d1btum" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.gd" id="1_hybsh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xicix"]
+material = ExtResource("1_6lw86")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="CameraWithPixelEffect" type="Camera3D"]
+script = ExtResource("1_hybsh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("QuadMesh_xicix")

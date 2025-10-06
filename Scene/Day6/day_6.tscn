@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://yh2mp33bmr81"]
+[gd_scene load_steps=14 format=3 uid="uid://yh2mp33bmr81"]
 
 [ext_resource type="Script" uid="uid://cislpym80i7qe" path="res://Scene/Day6/day_6.gd" id="1_abggr"]
 [ext_resource type="PackedScene" uid="uid://ml3n2frlnqrw" path="res://Objects/ConveyorBelt/conveyor_belt.tscn" id="1_od5d8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pgi5i7kedui" path="res://Objects/Scanner/scanner.tscn" id="3_og2q6"]
 [ext_resource type="PackedScene" uid="uid://cq37y1cw4n67g" path="res://Objects/Guillotine/guillotine.tscn" id="6_6xitq"]
 [ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="7_6xitq"]
+[ext_resource type="PackedScene" uid="uid://jcvyvyd4djh6" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.tscn" id="8_2f4wm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abggr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -54,9 +55,6 @@ mesh = SubResource("QuadMesh_ivadh")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 0, -2)
 mesh = SubResource("QuadMesh_ivadh")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9695694, 0.08832057, -0.22833022, 0, 0.93265796, 0.36076206, 0.24481668, -0.34978384, 0.9042766, -0.6007597, 1.8398831, 3.6989098)
-
 [node name="ConveyorBelt" parent="." instance=ExtResource("1_od5d8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9963949, 2.1174676)
 objet_to_spawn = ExtResource("2_og2q6")
@@ -80,6 +78,9 @@ corpse = ExtResource("2_og2q6")
 [node name="PointSystem" parent="." instance=ExtResource("7_6xitq")]
 text_before_score = "Sliced Food"
 point_to_reach = 10
+
+[node name="CameraWithPixelEffect" parent="." instance=ExtResource("8_2f4wm")]
+transform = Transform3D(0.9695694, 0.08832057, -0.22833021, 0, 0.9326579, 0.36076206, 0.24481668, -0.34978384, 0.90427655, -0.6007597, 1.8398831, 3.6989098)
 
 [connection signal="button_clicked" from="RedButton" to="." method="trigger_guillotine"]
 [connection signal="scanned_object_is_good" from="Scanner" to="." method="corpse_piece_validate"]

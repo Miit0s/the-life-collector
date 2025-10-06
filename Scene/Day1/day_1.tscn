@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btdn2gikdsyge"]
+[gd_scene load_steps=16 format=3 uid="uid://btdn2gikdsyge"]
 
 [ext_resource type="Script" uid="uid://c8hebvudm3g5y" path="res://Scene/Day1/day_1.gd" id="1_b0utm"]
 [ext_resource type="Material" uid="uid://pymlnmh8rhbh" path="res://Material/house_ground.tres" id="2_djrk2"]
@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://bfjng2qs1jmw" path="res://Material/factory_wall.tres" id="2_r7ocv"]
 [ext_resource type="PackedScene" uid="uid://bc1k50snhsp6k" path="res://Objects/CannedFood/canned_food.tscn" id="3_l3kie"]
 [ext_resource type="PackedScene" uid="uid://dljiffbn10h66" path="res://Objects/RedButton/red_button.tscn" id="4_r8kmg"]
-[ext_resource type="Material" uid="uid://d3rpip2gwt8dw" path="res://Material/game_shader_material.tres" id="4_xicix"]
+[ext_resource type="PackedScene" uid="uid://jcvyvyd4djh6" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.tscn" id="4_xicix"]
 [ext_resource type="PackedScene" uid="uid://do2rxyvk8ouyc" path="res://Objects/Dispenser/dispenser.tscn" id="5_ilu4x"]
 [ext_resource type="PackedScene" uid="uid://pgi5i7kedui" path="res://Objects/Scanner/scanner.tscn" id="6_l3kie"]
 [ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="7_r8kmg"]
@@ -29,11 +29,6 @@ size = Vector2(50, 20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_enlc8"]
 size = Vector2(50, 10)
-
-[sub_resource type="QuadMesh" id="QuadMesh_xicix"]
-material = ExtResource("4_xicix")
-flip_faces = true
-size = Vector2(2, 2)
 
 [node name="Day1" type="Node3D"]
 script = ExtResource("1_b0utm")
@@ -63,11 +58,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20, 
 material_override = ExtResource("2_r7ocv")
 mesh = SubResource("QuadMesh_enlc8")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.93265796, 0.36076206, 0, -0.36076206, 0.93265796, 0, 1.8398831, 3.257585)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-mesh = SubResource("QuadMesh_xicix")
+[node name="Camera3D" parent="." instance=ExtResource("4_xicix")]
+transform = Transform3D(1, 0, 0, 0, 0.9326579, 0.36076206, 0, -0.36076206, 0.9326579, 0, 1.8398831, 3.257585)
 
 [node name="ConveyorBelt" parent="." instance=ExtResource("2_ilu4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9963949, 2.1174676)

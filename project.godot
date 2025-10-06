@@ -13,7 +13,7 @@ config_version=5
 config/name="The Life Collector"
 run/main_scene="uid://bjt0x5gy2ri8f"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://b37ljofenaov4"
 
 [autoload]
 
