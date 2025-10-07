@@ -6,7 +6,10 @@ class_name MeatTank
 @export var meat_to_add_by_block: float = 2
 @export var max_percentage_wanted: float = 80
 @export var min_percentage_wanted: float = 15
-@export var decrease_speed: float = 10
+@export var decrease_speed: float = 1
+@export var max_speed: float = 10
+@export var speedup_cooldown: float = 5
+@export var speedup_increase_value: float = 1
 @export var point_cooldown: float = 0.5
 
 var completion_percentage: float = 100:
@@ -19,6 +22,7 @@ var is_decreasing: bool = false
 
 var _can_loose_point: bool = true
 var _can_win_point: bool = true
+var _can_speedup: bool = true
 
 signal has_correct_percentage
 signal has_incorrect_percentage
@@ -32,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	completion_percentage -= delta * decrease_speed
 	
+	speedup()
 	if completion_percentage > max_percentage_wanted or completion_percentage < min_percentage_wanted:
 		loose_point()
 	else:
@@ -66,3 +71,11 @@ func loose_point():
 	has_incorrect_percentage.emit()
 	await get_tree().create_timer(point_cooldown).timeout
 	_can_loose_point = true
+
+func speedup():
+	if not _can_speedup: return
+	
+	_can_speedup = false
+	decrease_speed += speedup_increase_value
+	await get_tree().create_timer(speedup_cooldown).timeout
+	_can_speedup = true
