@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="2_lv0gm"]
 [ext_resource type="PackedScene" uid="uid://o8et4lboneid" path="res://Objects/Grinder/grinder.tscn" id="4_j2bw1"]
 [ext_resource type="PackedScene" uid="uid://cwqr5g0wewhfx" path="res://Objects/Dispenser/object_dispenser.tscn" id="5_u2inc"]
-[ext_resource type="PackedScene" uid="uid://3wjheerm6ayi" path="res://Objects/Corpse/corpse_piece.tscn" id="6_msjyl"]
+[ext_resource type="PackedScene" uid="uid://3wjheerm6ayi" path="res://Objects/MeatPiece/corpse_piece.tscn" id="6_msjyl"]
 [ext_resource type="PackedScene" uid="uid://jcvyvyd4djh6" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.tscn" id="7_yye55"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j2bw1"]

@@ -1,7 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs1cvh6wqkbmr"]
+[gd_scene load_steps=8 format=3 uid="uid://bs1cvh6wqkbmr"]
 
+[ext_resource type="Script" uid="uid://dx4oxvg3gqmb1" path="res://Scene/Day2/day_2.gd" id="1_kc13w"]
 [ext_resource type="PackedScene" uid="uid://jcvyvyd4djh6" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.tscn" id="1_sddk3"]
+[ext_resource type="PackedScene" uid="uid://belwtvd2s2ty2" path="res://Objects/MeatTank/meat_tank.tscn" id="2_weccx"]
+[ext_resource type="PackedScene" uid="uid://dljiffbn10h66" path="res://Objects/RedButton/red_button.tscn" id="3_fg5sq"]
+[ext_resource type="PackedScene" uid="uid://cwqr5g0wewhfx" path="res://Objects/Dispenser/object_dispenser.tscn" id="4_0uhho"]
+[ext_resource type="PackedScene" uid="uid://cv2mqca8svwb3" path="res://Objects/MeatPiece/meat_piece.tscn" id="5_gcb3b"]
+[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="7_p6tbb"]
 
 [node name="Day2" type="Node3D"]
+script = ExtResource("1_kc13w")
 
 [node name="CameraWithPixelEffect" parent="." instance=ExtResource("1_sddk3")]
+transform = Transform3D(1, 0, 0, 0, 0.79515606, 0.60640484, 0, -0.60640484, 0.79515606, 0, 2.1246545, 2.3876052)
+
+[node name="MeatTank" parent="." instance=ExtResource("2_weccx")]
+point_cooldown = 1.0
+
+[node name="RedButton" parent="." instance=ExtResource("3_fg5sq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0565262, 1.989074)
+hold_mode = true
+
+[node name="ObjectDispenser" parent="." instance=ExtResource("4_0uhho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.579642, 0)
+object_to_spawn = ExtResource("5_gcb3b")
+spawn_cooldown = 0.1
+
+[node name="PointSystem" parent="." instance=ExtResource("7_p6tbb")]
+text_before_score = "Meat in tank"
+point_to_remove = -1
+point_to_reach = 20
+
+[connection signal="has_correct_percentage" from="MeatTank" to="." method="win_point"]
+[connection signal="has_incorrect_percentage" from="MeatTank" to="." method="loose_point"]
+[connection signal="start_holding_button" from="RedButton" to="." method="_start_holding_button"]
+[connection signal="stop_holding_button" from="RedButton" to="." method="_stop_holding_button"]
+[connection signal="score_reach" from="PointSystem" to="." method="day_ended"]

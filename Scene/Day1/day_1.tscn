@@ -15,12 +15,12 @@
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_djrk2"]
+[sub_resource type="Sky" id="Sky_xicix"]
 sky_material = SubResource("ProceduralSkyMaterial_po3mu")
 
 [sub_resource type="Environment" id="Environment_ajv3d"]
 background_mode = 2
-sky = SubResource("Sky_djrk2")
+sky = SubResource("Sky_xicix")
 ambient_light_sky_contribution = 0.2
 tonemap_mode = 2
 
