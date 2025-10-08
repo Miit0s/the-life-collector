@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://pgi5i7kedui"]
+[gd_scene load_steps=13 format=3 uid="uid://pgi5i7kedui"]
 
 [ext_resource type="Script" uid="uid://bkj0yesk1ob84" path="res://Objects/Scanner/scanner.gd" id="1_twtln"]
 [ext_resource type="Material" uid="uid://bh07flmwmclfc" path="res://Material/factory_machine.tres" id="2_h54np"]
+[ext_resource type="Shader" uid="uid://die3kmkd5j6qd" path="res://Shader/holographic.gdshader" id="3_gpl4n"]
 [ext_resource type="PackedScene" uid="uid://crui8dxa12lx3" path="res://UISystem/ScanSystem/scan_system.tscn" id="3_nmeba"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kdp30"]
@@ -10,11 +11,20 @@ size = Vector3(0.1, 1, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_twtln"]
 size = Vector3(1, 0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h54np"]
-albedo_color = Color(0, 0.52631307, 0.5263129, 0.27450982)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvkj6"]
+render_priority = 0
+shader = ExtResource("3_gpl4n")
+shader_parameter/opacity = 0.35
+shader_parameter/core_colour = Color(1, 1, 1, 1)
+shader_parameter/fresnel_strength = 0.8
+shader_parameter/fresnel_colour = Color(1, 1, 1, 1)
+shader_parameter/enable_scan_lines = true
+shader_parameter/scan_speed = 1.0
+shader_parameter/scan_colour = Color(0, 1, 1, 1)
+shader_parameter/line_density = 100.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_nmeba"]
-material = SubResource("StandardMaterial3D_h54np")
+material = SubResource("ShaderMaterial_qvkj6")
 size = Vector3(0.58, 1, 0.09)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h54np"]

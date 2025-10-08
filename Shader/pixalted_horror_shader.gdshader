@@ -1,12 +1,13 @@
 shader_type spatial;
-render_mode unshaded, fog_disabled;
+render_mode unshaded, fog_disabled, cull_disabled, depth_draw_never, depth_test_disabled, blend_mix;
 
 uniform float brightness: hint_range(0.01, 20.0, .01) = 0.26;
-uniform float contrast: hint_range(1.0, 4.0,  .01) = 3.0;
+uniform float contrast: hint_range(1.0, 4.0, .01) = 3.0;
 uniform float scale: hint_range(0.1, 10.0, .01) = 1.0;
 uniform float rotation: hint_range(0.00, 6.28, .01) = 0.08;
 uniform float resolution_downsampling: hint_range(1.0, 8.0, 1.0) = 4.0;
 uniform float matrix_intensity: hint_range(0.0, 0.5, 0.001) = 0.05;
+
 uniform sampler2D screen_texture: hint_screen_texture, filter_nearest, repeat_disable;
 
 mat2 rotate(float a) {
@@ -16,7 +17,7 @@ mat2 rotate(float a) {
 }
 
 void vertex() {
-	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
+	POSITION = vec4(VERTEX.xy, CLIP_SPACE_FAR, 1.0);
 }
 
 float dot_matrix(vec2 uv) {

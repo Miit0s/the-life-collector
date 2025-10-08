@@ -69,7 +69,7 @@ func display_interaction():
 		label.text = ""
 		return
 	
-	#This code return error sometimes because the object is queue_free. To fix that, I should probably only desctivate it
+	#TODO: This code return error sometimes because the object is queue_free. To fix that, I should probably only desctivate it
 	var collider = ray_cast_3d.get_collider()
 	var shape_id = ray_cast_3d.get_collider_shape()
 	var owner_id = collider.shape_find_owner(shape_id)

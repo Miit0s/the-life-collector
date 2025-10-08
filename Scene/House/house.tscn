@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://ct0tql2yu45s"]
+[gd_scene load_steps=59 format=4 uid="uid://ct0tql2yu45s"]
 
 [ext_resource type="Script" uid="uid://dr31tohgt4630" path="res://Scene/House/house.gd" id="1_4d6p6"]
 [ext_resource type="PackedScene" uid="uid://42cpyid1ir02" path="res://Objects/Player/player.tscn" id="1_al4dt"]
@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c7k2lgt4ndtkp" path="res://Model/Collector.obj" id="4_53t7d"]
 [ext_resource type="Texture2D" uid="uid://b44d8g77k0wjm" path="res://Textures/GameTexture/pixelated_old_door.jpg" id="5_dl7y5"]
 [ext_resource type="Material" uid="uid://btimwm747wkms" path="res://Material/fridge.tres" id="6_0p06j"]
+[ext_resource type="Texture2D" uid="uid://cf2iudyifhepn" path="res://Textures/GameTexture/PixaltedFridgeGrid.png" id="7_ssyd2"]
 [ext_resource type="Texture2D" uid="uid://dxgjuoj2gvnv4" path="res://Textures/GameTexture/vc_mattress.png" id="8_pw7id"]
 [ext_resource type="Material" uid="uid://dognrpwyuc2jt" path="res://Material/canned_food.tres" id="10_ssyd2"]
 
@@ -102,6 +103,10 @@ _surfaces = [{
 "vertex_count": 84,
 "vertex_data": PackedByteArray("AAAAvwAAoL8AAEC/AAAAvwAAoD8AAEC/AAAAvwAAoL8AAEA/AAAAvwAAoL8AAEC/AAAAvwAAoL8AAEA/AAAAPwAAoL8AAEC/AAAAvwAAoL8AAEC/AAAAPwAAoL8AAEC/AAAAvwAAoD8AAEC/AAAAvwAAoL8AAEA/AAAAvwAAoD8AAEC/AAAAvwAAoD8AAEA/AAAAvwAAoL8AAEA/AAAAvwAAoD8AAEA/AAAAPwAAoD8AAEA/AAAAvwAAoD8AAEC/AAAAPwAAoD8AAEA/AAAAvwAAoD8AAEA/AAAAPwAAoL8AAEC/AAAAPwAAoL8AAEA/AAAAP83MjL+amRm/AAAAPwAAoL8AAEC/AAAAP83MjL+amRm/AAAAPwAAoD8AAEC/AAAAvwAAoL8AAEA/AAAAPwAAoL8AAEA/AAAAPwAAoL8AAEC/AAAAvwAAoL8AAEA/AAAAPwAAoD8AAEA/AAAAPwAAoL8AAEA/AAAAPwAAoL8AAEA/AAAAP83MjL+amRk/AAAAP83MjL+amRm/AAAAPwAAoL8AAEA/AAAAP83MjD+amRk/AAAAP83MjL+amRk/AAAAvwAAoD8AAEC/AAAAPwAAoL8AAEC/AAAAPwAAoD8AAEC/AAAAvwAAoD8AAEC/AAAAPwAAoD8AAEC/AAAAPwAAoD8AAEA/AAAAPwAAoD8AAEC/AAAAP83MjL+amRm/AAAAP83MjD+amRm/AAAAPwAAoD8AAEC/AAAAP83MjD+amRm/AAAAP83MjD+amRk/AAAAPwAAoL8AAEA/AAAAPwAAoD8AAEA/AAAAP83MjD+amRk/AAAAPwAAoD8AAEC/AAAAP83MjD+amRk/AAAAPwAAoD8AAEA/cDLMvs3MjL+amRm/cDLMvs3MjL+amRk/cDLMvs3MjD+amRm/cDLMvs3MjL+amRm/cDLMvs3MjD+amRm/AAAAP83MjL+amRm/cDLMvs3MjL+amRm/AAAAP83MjL+amRk/cDLMvs3MjL+amRk/cDLMvs3MjD+amRm/cDLMvs3MjD+amRk/AAAAP83MjD+amRm/cDLMvs3MjL+amRk/cDLMvs3MjD+amRk/cDLMvs3MjD+amRm/cDLMvs3MjL+amRk/AAAAP83MjD+amRk/cDLMvs3MjD+amRk/cDLMvs3MjL+amRm/AAAAP83MjL+amRm/AAAAP83MjL+amRk/cDLMvs3MjL+amRk/AAAAP83MjL+amRk/AAAAP83MjD+amRk/cDLMvs3MjD+amRm/AAAAP83MjD+amRm/AAAAP83MjL+amRm/cDLMvs3MjD+amRk/AAAAP83MjD+amRk/AAAAP83MjD+amRm/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5/////f/9/AID///9//38AgP///3//fwCA/3//fwAA/7//f/9/AAD/v/9//38AAP+//3//////////f/////////9//////////38AAP//////fwAA//////9/AAD/////////f/9/AID///9//38AgP///3//fwCA/////wAA/7//////AAD/v/////8AAP+//3//////////f/////////9//////////////wAA/7//////AAD/v/////8AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//38AAP//////fwAA//////9/AAD/////")
 }]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbsqy"]
+transparency = 1
+albedo_texture = ExtResource("7_ssyd2")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pw7id"]
 size = Vector2(1.2, 0.8)
@@ -463,7 +468,7 @@ mesh = SubResource("ArrayMesh_pv2rd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Fridge"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-material_override = ExtResource("6_0p06j")
+material_override = SubResource("StandardMaterial3D_lbsqy")
 mesh = SubResource("PlaneMesh_pw7id")
 
 [node name="DoorMovePoint" type="Marker3D" parent="Props/Fridge"]
