@@ -1,5 +1,5 @@
 extends Control
-class_name ScanSystem
+class_name PercentageDisplaySystem
 
 @onready var goal: Label = $Goal
 @onready var current: Label = $Current

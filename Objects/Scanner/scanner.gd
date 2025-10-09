@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
-@onready var scan_system: ScanSystem = $SubViewport/ScanSystem
+@onready var scan_system: PercentageDisplaySystem = $SubViewport/ScanSystem
 
 @export var minimum_percentage: float = 80
 @export var use_sliced: bool = false

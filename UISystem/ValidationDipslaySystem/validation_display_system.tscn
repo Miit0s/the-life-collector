@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjp36ud86jo68"]
+
+[ext_resource type="Script" uid="uid://boyr55f0234ke" path="res://UISystem/ValidationDipslaySystem/validation_display_system.gd" id="1_s4dci"]
+[ext_resource type="Texture2D" uid="uid://sjlx2tg6gqpx" path="res://Textures/GameTexture/Iconoir-Team-Iconoir-Emoji.512-Pixel.png" id="2_arntq"]
+[ext_resource type="Texture2D" uid="uid://bk6naio1e5h87" path="res://Textures/GameTexture/Iconoir-Team-Iconoir-Emoji-ball.512-Pixel.png" id="3_frr2l"]
+[ext_resource type="Texture2D" uid="uid://cpcp05vvyntes" path="res://Textures/GameTexture/Iconoir-Team-Iconoir-Emoji-sad.512-Pixel.png" id="4_hx2hh"]
+
+[node name="ValidationDisplaySystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s4dci")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HappyTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_arntq")
+expand_mode = 1
+
+[node name="MidTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_frr2l")
+expand_mode = 1
+
+[node name="SadTexture" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hx2hh")
+expand_mode = 1

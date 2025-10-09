@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkj0yesk1ob84" path="res://Objects/Scanner/scanner.gd" id="1_twtln"]
 [ext_resource type="Material" uid="uid://bh07flmwmclfc" path="res://Material/factory_machine.tres" id="2_h54np"]
 [ext_resource type="Shader" uid="uid://die3kmkd5j6qd" path="res://Shader/holographic.gdshader" id="3_gpl4n"]
-[ext_resource type="PackedScene" uid="uid://crui8dxa12lx3" path="res://UISystem/ScanSystem/scan_system.tscn" id="3_nmeba"]
+[ext_resource type="PackedScene" uid="uid://crui8dxa12lx3" path="res://UISystem/PercentageDisplaySystem/percentage_display_system.tscn" id="3_nmeba"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kdp30"]
 size = Vector3(0.1, 1, 0.1)

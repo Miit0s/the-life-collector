@@ -2,6 +2,7 @@ extends Node3D
 class_name MeatTank
 
 @onready var meat: MeshInstance3D = $Meat
+@onready var validation_display_system: ValidationDisplaySystem = $SubViewport/ValidationDisplaySystem
 
 @export var meat_to_add_by_block: float = 2
 @export var max_percentage_wanted: float = 80
@@ -11,8 +12,9 @@ class_name MeatTank
 @export var speedup_cooldown: float = 5
 @export var speedup_increase_value: float = 1
 @export var point_cooldown: float = 0.5
+@export var warning_when_close_to_percentage_by: float = 5
 
-var completion_percentage: float = 100:
+var completion_percentage: float = 50:
 	set(new_value):
 		completion_percentage = max(min(new_value, 100), 0)
 		adjust_mesh_level()
@@ -38,13 +40,20 @@ func _physics_process(delta: float) -> void:
 	
 	speedup()
 	if completion_percentage > max_percentage_wanted or completion_percentage < min_percentage_wanted:
+		validation_display_system.set_error_state()
 		loose_point()
+	elif completion_percentage > max_percentage_wanted - warning_when_close_to_percentage_by or \
+	completion_percentage < min_percentage_wanted + warning_when_close_to_percentage_by:
+		validation_display_system.set_near_error_state()
+		win_point()
 	else:
+		validation_display_system.set_validate_state()
 		win_point()
 
 func adjust_mesh_level():
 	if completion_percentage <= 0:
 		meat.hide()
+		return
 	else:
 		meat.show()
 	

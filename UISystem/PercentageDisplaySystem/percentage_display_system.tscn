@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://crui8dxa12lx3"]
 
-[ext_resource type="Script" uid="uid://ba6t2cg867cdy" path="res://UISystem/ScanSystem/scan_system.gd" id="1_8cmdt"]
+[ext_resource type="Script" uid="uid://ba6t2cg867cdy" path="res://UISystem/PercentageDisplaySystem/percentage_display_system.gd" id="1_8cmdt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_enebe"]
 font_size = 80
@@ -45,7 +45,7 @@ _data = {
 &"RESET": SubResource("Animation_s011j")
 }
 
-[node name="ScanSystem" type="Control"]
+[node name="PercentageDisplaySystem" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
