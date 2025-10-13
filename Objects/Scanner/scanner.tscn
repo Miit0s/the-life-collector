@@ -63,7 +63,6 @@ mesh = SubResource("BoxMesh_nmeba")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.45, 0)
 collision_mask = 2
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Screen" type="Node3D" parent="."]
 

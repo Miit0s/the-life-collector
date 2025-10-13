@@ -32,6 +32,10 @@ func _physics_process(delta: float) -> void:
 func spawn_object():
 	var object: Node3D = objet_to_spawn.instantiate()
 	
+	if object is RigidBody3D:
+		var body: RigidBody3D = object
+		body.freeze = true
+	
 	object.position.x = conveyor_mesh.to_local(Vector3(spawn_object_x, 0, 0)).x
 	
 	conveyor_mesh.add_child(object)

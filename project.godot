@@ -19,10 +19,6 @@ config/icon="uid://b37ljofenaov4"
 
 GlobalValue="*res://Autoload/global_value.gd"
 
-[display]
-
-window/size/mode=2
-
 [input]
 
 mouse_clic={

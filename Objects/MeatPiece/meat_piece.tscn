@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv2mqca8svwb3"]
+[gd_scene load_steps=6 format=3 uid="uid://cv2mqca8svwb3"]
+
+[ext_resource type="Texture2D" uid="uid://d15tyr2uen33o" path="res://Textures/GameTexture/meat.jpg" id="1_jtjsg"]
+[ext_resource type="Script" uid="uid://cw3ogi84rpphu" path="res://Objects/MeatPiece/meat_piece.gd" id="1_qmhy5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tbr0x"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmhy5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_jtjsg")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tbr0x"]
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="MeatPiece" type="RigidBody3D"]
 collision_layer = 2
+freeze_mode = 1
+script = ExtResource("1_qmhy5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tbr0x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_qmhy5")
 mesh = SubResource("BoxMesh_tbr0x")

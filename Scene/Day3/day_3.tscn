@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://dnjw6c0n1x2p3"]
+
+[ext_resource type="Script" uid="uid://btpn6futpceyj" path="res://Scene/Day3/day_3.gd" id="1_7kngu"]
+[ext_resource type="PackedScene" uid="uid://jcvyvyd4djh6" path="res://Objects/CameraWithPixelEffect/camera_with_pixel_effect.tscn" id="1_h27mm"]
+[ext_resource type="PackedScene" uid="uid://dljiffbn10h66" path="res://Objects/RedButton/red_button.tscn" id="2_2i1mp"]
+[ext_resource type="PackedScene" uid="uid://cma1rn8pfgk7e" path="res://UISystem/PointSystem/point_system.tscn" id="3_ky47a"]
+[ext_resource type="PackedScene" uid="uid://ml3n2frlnqrw" path="res://Objects/ConveyorBelt/conveyor_belt.tscn" id="4_ky47a"]
+[ext_resource type="PackedScene" uid="uid://cv2mqca8svwb3" path="res://Objects/MeatPiece/meat_piece.tscn" id="5_ky47a"]
+[ext_resource type="PackedScene" uid="uid://cv8sfemodote3" path="res://Objects/Oven/oven.tscn" id="6_3ptye"]
+[ext_resource type="PackedScene" uid="uid://pgi5i7kedui" path="res://Objects/Scanner/scanner.tscn" id="8_dwvim"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dwvim"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_dlbf5"]
+sky_material = SubResource("ProceduralSkyMaterial_dwvim")
+
+[sub_resource type="Environment" id="Environment_6kjbd"]
+background_mode = 2
+sky = SubResource("Sky_dlbf5")
+tonemap_mode = 2
+
+[node name="Day3" type="Node3D"]
+script = ExtResource("1_7kngu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6kjbd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CameraWithPixelEffect" parent="." instance=ExtResource("1_h27mm")]
+transform = Transform3D(1, 0, 0, 0, 0.9797049, 0.2004453, 0, -0.2004453, 0.9797049, 0, 0.6412469, 1.2209282)
+
+[node name="RedButton" parent="." instance=ExtResource("2_2i1mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5179182)
+hold_mode = true
+
+[node name="PointSystem" parent="." instance=ExtResource("3_ky47a")]
+text_before_score = "Cooked Meat"
+point_to_remove = 0
+point_to_reach = 15
+
+[node name="ConveyorBelt" parent="." instance=ExtResource("4_ky47a")]
+objet_to_spawn = ExtResource("5_ky47a")
+spawn_object_x = -3.0
+
+[node name="Oven" parent="." instance=ExtResource("6_3ptye")]
+oven_power = 50.0
+
+[node name="Scanner" parent="." instance=ExtResource("8_dwvim")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.9, 0.35, -0.1)
+minimum_percentage = 60.0
+maximum_percentage = 85.0
+
+[connection signal="start_holding_button" from="RedButton" to="." method="activate_oven"]
+[connection signal="stop_holding_button" from="RedButton" to="." method="desactivate_oven"]
+[connection signal="meat_has_trigger_area" from="Oven" to="." method="meat_has_reach_oven"]
+[connection signal="scanned_object_is_good" from="Scanner" to="." method="meat_have_good_heating"]

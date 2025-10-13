@@ -6,7 +6,7 @@ class_name PointSystem
 
 @export var text_before_score: String = "Score"
 @export var point_to_add: int = 1
-@export var point_to_remove: int = 1
+@export var point_to_remove: int = -1
 @export var point_to_reach: int = 100
 
 var _current_point: int = 0:
